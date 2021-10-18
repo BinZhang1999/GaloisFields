@@ -23,7 +23,7 @@ end
 
 % start recursive
 while true
-    a(end:end-deg_b)~=
+    x = nor(a(end:end-deg_b), b);
     
 end
 
