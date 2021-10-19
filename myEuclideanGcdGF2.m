@@ -2,12 +2,12 @@ function r = myEuclideanGcdGF2(a, b)
 % Find the greatest common divisor using Euclidean Algorithm
 % Input:
 %   a: polynomial coefficient in order of ascending power
-%      the highest(rightest position is 1)
+%      the highest(rightest) position is 1
 %   b: polynomial coefficient in order of ascending power
-%      the highest(rightest position is 1)
+%      the highest(rightest) position is 1
 % Ouput:
 %   r: the greatest common divisor 
-%      the highest(rightest position is 1)
+%      the highest(rightest) position is 1
 %      polynomial coefficient in order of ascending power
 
 a = logical(a);
@@ -23,8 +23,13 @@ end
 
 % start recursive
 while true
-    x = nor(a(end:end-deg_b), b);
-    
+    [~, r] = myDeconvGF2(a, b);
+    if ~any(r)
+        r = b;
+        return;
+    end
+    a = b;
+    b = mod(r,2);
 end
 
 
